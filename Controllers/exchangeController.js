@@ -1,6 +1,6 @@
-import Exchange from "../MODELS/exchange.js";
-import User from "../MODELS/user.js";
-import Contact from "../MODELS/contact.js";
+import Exchange from "../models/exchange.js";
+import User from "../models/user.js";
+import Contact from "../models/contact.js";
 
 const exchangeController = {
 

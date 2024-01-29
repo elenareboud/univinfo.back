@@ -1,4 +1,4 @@
-import sequelize from "../database.js";
+import sequelize from "../db/dbConnection.js";
 import { DataTypes, Model, Validator } from "sequelize";
 
 class Authorisation extends Model {}

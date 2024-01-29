@@ -8,7 +8,7 @@ dotenv.config();
 const server = express();
 //on definie la var d'environnement "port" via var global 
 //"process " fournie par NODE et sa propriété "env"
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 server.use(express.json());
 server.use(cors());

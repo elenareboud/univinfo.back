@@ -1,4 +1,4 @@
-import sequelize from "../database.js";
+import sequelize from "../db/dbConnection.js";
 import { Model } from "sequelize";
 import Tier from "./tier.js";
 import Contact from "./contact.js";

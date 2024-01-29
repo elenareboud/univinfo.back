@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import User from "../MODELS/user.js";
-import Groupe from "../MODELS/groupe.js";
-import Authorisation from "../MODELS/authorisation.js";
+import User from "../models/user.js";
+import Groupe from "../models/groupe.js";
+import Authorisation from "../models/authorisation.js";
 
 const authController = {
     login: async function (req, res) {

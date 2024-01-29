@@ -1,15 +1,15 @@
-import sequelize from "./database.js";
+import sequelize from "./dbConnection.js";
 //importation des models 
-import Authorisation from "./Models/authorisation.js";
-import Groupe from "./Models/groupe.js";
-import User from "./Models/user.js";
-import Contact from "./Models/contact.js";
-import Tier from "./Models/tier.js";
-import Campaign from "./Models/campaign.js";
-import Exchange from "./Models/exchange.js";
-import Bind from "./Models/bind.js";
-import TierHasCampaign from "./Models/tierhascampaign.js";
-import UserHasCampaign from "./Models/userhascampaign.js";
+import Authorisation from "../models/authorisation.js";
+import Groupe from "../models/groupe.js";
+import User from "../models/user.js";
+import Contact from "../models/contact.js";
+import Tier from "../models/tier.js";
+import Campaign from "../models/campaign.js";
+import Exchange from "../models/exchange.js";
+import Bind from "../models/bind.js";
+import TierHasCampaign from "../models/tierhascampaign.js";
+import UserHasCampaign from "../models/userhascampaign.js";
 
 //tentative connection
 try {
@@ -333,9 +333,6 @@ try {
     await UserHasCampaign.create({ UserId: 2, CampaignId:2 })
     await UserHasCampaign.create({ UserId: 3, CampaignId:3 })
     console.log("********affectation USER/campaign ok**********");
-
-
-
 
 } catch (error) {
     console.error('Il y a un probléme', error);

@@ -1,7 +1,7 @@
-import Bind from '../MODELS/bind.js';
-import Contact from '../MODELS/contact.js';
-import Tier from '../MODELS/tier.js';
-import Exchange from '../MODELS/exchange.js';
+import Bind from '../models/bind.js';
+import Contact from '../models/contact.js';
+import Tier from '../models/tier.js';
+import Exchange from '../models/exchange.js';
 import { Op } from 'sequelize';
 
 const contactController = {
