@@ -76,76 +76,6 @@ try {
             personal_data: 'Consent given',
             actif: true,
         })
-    await Contact.create(
-        {
-            title: 'M.',
-            firstname: 'Jimmy',
-            lastname: 'Omont',
-            work_phone: '666252141',
-            cellphone: '0666252141',
-            email: 'jimmy.omont@hotmail.fr',
-            networks: 'https://www.linkedin.com/in/jimmy-omont-141471166/',
-            poste_fonction: 'stagiaire',
-            address: 'Bois de Boulogne, Paris 16e',
-            personal_data: 'RAS',
-            actif: false,
-        })
-    await Contact.create(
-        {
-            title: 'Mme',
-            firstname: 'Nolwenn',
-            lastname: 'Maheut',
-            work_phone: '0',
-            cellphone: '0',
-            email: 'melvine.mht@hotmail.com',
-            networks: 'https://www.linkedin.com/in/nolwenn-maheut-257b3521b/',
-            poste_fonction: 'stagiaire',
-            address: 'Quelque part dans le 77',
-            personal_data: 'Aime les chats et le violon',
-            actif: true,
-        })
-    await Contact.create(
-        {
-            title: 'Mme',
-            firstname: 'Elena',
-            lastname: 'Reboud',
-            work_phone: '0',
-            cellphone: '0',
-            email: 'elena.reboud@gmail.com',
-            networks: 'https://www.linkedin.com/in/elena-reboud/',
-            poste_fonction: 'stagiaire',
-            address: 'Au nord du 77',
-            personal_data: 'Tu es de la police ?',
-            actif: true,
-        })
-    await Contact.create(
-        {
-            title: 'M.',
-            firstname: 'Alain',
-            lastname: 'Ferry',
-            work_phone: "0",
-            cellphone: "0",
-            email: 'alainferry27@gmail.com',
-            networks: 'https://www.linkedin.com/in/alain-ferry/',
-            poste_fonction: 'stagiaire',
-            address: 'Josse, Nouvelle-Aquitaine',
-            personal_data: "est à l'écoute de nouvelles opportunités",
-            actif: true,
-        })
-    await Contact.create(
-        {
-            title: 'M.',
-            firstname: 'Julien',
-            lastname: 'Guilbaud',
-            work_phone: "0615161209",
-            cellphone: "0615161209",
-            email: 'dev.guilbaud@gmail.com',
-            networks: 'https://www.linkedin.com/in/julien-guilbaud-b1059222a',
-            poste_fonction: 'stagiaire',
-            address: 'Lembras, Nouvelle-Aquitaine',
-            personal_data: "on dit chocolatine",
-            actif: true,
-        })
 
     console.log('données CONTACT ok')
     await Groupe.create({ fonction: 'Administrateur', AuthorisationId: 1 })
@@ -155,10 +85,7 @@ try {
     await User.create({ lastname: 'ladmin', firstname: 'John', password: 'password111', email: 'admin@example.com', GroupeId: 1 })
     await User.create({ lastname: 'lemodo', firstname: 'John', password: 'password222', email: 'mode@example.com', GroupeId: 2 })
     await User.create({ lastname: 'lutil', firstname: 'John', password: 'password333', email: 'util@example.com', GroupeId: 3 })
-    await User.create({ lastname: 'ladev1', firstname: 'Nolwenn', password: 'password123', email: 'nol@example.com', GroupeId: 1 })
-    await User.create({ lastname: 'ladev2', firstname: 'Elena', password: 'password456', email: 'ele@example.com', GroupeId: 1 })
-    await User.create({ lastname: 'ledev1', firstname: 'Alain', password: 'password789', email: 'ala@example.com', GroupeId: 1 })
-    await User.create({ lastname: 'ledev2', firstname: 'Julien', password: 'password102', email: 'jul@example.com', GroupeId: 1 })
+
     console.log('données USER ok')
     await Tier.create(
         {

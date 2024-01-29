@@ -1,10 +1,10 @@
 {
-  "name": "backprojet-tuto",
+  "name": "univinfo-back",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "scripts": {
-    "initdb": "node BACK-END/inidb",
+    "initdb": "node univinfo.back/inidb",
     "back": "node server",
     "start": "node server.js"
   },
