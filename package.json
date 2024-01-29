@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  
   "scripts": {
     "initdb": "node BACK-END/inidb",
-    "back": "node server"
+    "back": "node server",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +20,6 @@
     "pg": "^8.11.2",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.32.1"
-  }
+  },
+  "main": "server.js"
 }
