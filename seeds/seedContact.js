@@ -1,9 +1,7 @@
 import Contact from "../models/contact.js";
 
 const seedContact = async () => {
-    // Ajoutez ici les données pour Contact
-    // Exemple:
-    await Contact.create({
+        await Contact.create(
       {
         title: 'M.',
         firstname: 'Jean-Philippe',
@@ -48,3 +46,5 @@ await Contact.create(
 
     console.log('données CONTACT ok');
 };
+
+export default seedContact;
