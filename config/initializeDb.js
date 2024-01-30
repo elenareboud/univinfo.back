@@ -54,14 +54,7 @@ initializeDatabase();
     console.log('******Toutes les tables sont crées******');
     //on ajoute nos fausses données
 
-    // Seed des données pour la table AUTHORISATION
-    await Authorisation.create({ make: true, edit: true, suppress: true })
-    await Authorisation.create({ make: true, edit: false, suppress: true })
-    await Authorisation.create({ make: false, edit: true, suppress: true })
-    console.log('données AUTHORISATION ok')
-    // Seed des données pour la table CONTACT
-    
-    
+        
     await Exchange.create({ UserId: 1, ContactId: 1, content: 'envoyer un devis' })
     await Exchange.create({ UserId: 2, ContactId: 2, content: 'rapeller plus tard.' })
     await Exchange.create({ UserId: 3, ContactId: 3, content: 'ne plus déranger.' })
