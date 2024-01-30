@@ -1,30 +1,56 @@
-import sequelize from "./dbConnection.js";
-//importation des models 
-import Authorisation from "../models/authorisation.js";
-import Groupe from "../models/groupe.js";
-import User from "../models/user.js";
-import Contact from "../models/contact.js";
-import Tier from "../models/tier.js";
-import Campaign from "../models/campaign.js";
-import Exchange from "../models/exchange.js";
-import Bind from "../models/bind.js";
-import TierHasCampaign from "../models/tierhascampaign.js";
-import UserHasCampaign from "../models/userhascampaign.js";
+import sequelize from "./sequelize.js";
+//import des seed
+import seedAuthorisation from "../seeds/seedAuthorisation.js";
+import seedGroupe from "../seeds/seedGroupe.js";
+import seedUser from "../seeds/seedUser.js";
+import seedContact from "../seeds/seedContact.js";
+import seedTier from "../seeds/seedTier.js";
+import seedCampaign from "../seeds/seedCampaign.js";
+import seedExchange from "../seeds/seedExchange.js";
+import seedBind from "../seeds/seedBind.js";
+import seedTierHasCampaign from "../seeds/seedTierHasCampaign.js";
+import seedUserHasCampaign from "../seeds/seedUserHasCampaign.js";
 
-//tentative connection
-try {
-    await sequelize.authenticate();
-    console.log('Connection avec la database réussie');
-} catch (error) {
-    console.error('Impossible de ce connecter a la database:', error);
-}
+// la connexion à la base de données, sa réinitialisation, 
+//et l'appel à chaque script de seeding dans l'ordre nécessaire.
 
-//tentative création table a partir de nos models et ajout des fausses données
-try {
+const initializeDatabase = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connection avec la database réussie');
 
-    await sequelize.drop();//on efface toutes les tables
+        await sequelize.drop();
+        //A model can be synchronized with the database by calling model.sync(options), 
+        //an asynchronous function (that returns a Promise). 
+        await sequelize.sync({ force: true });//This creates the table, dropping it first if it already existed
+        console.log('******Toutes les tables sont crées******');
 
-    await sequelize.sync({ force:true });//permet de supprimer complètement la table associée aux models pour repartir avec les données neuves à chaque demarrage d'API REST/pour le développmnt
+        await seedAuthorisation();
+        await seedContact();
+        await seedGroupe();
+        await seedUser();
+        await seedContact();
+        await seedTier();
+        await seedCampaign();
+        await seedExchange();
+        await seedBind();
+        await seedTierHasCampaign();
+        await seedUserHasCampaign();
+        
+
+        console.log("Toutes les données ont été initialisées avec succès");
+    } catch (error) {
+        console.error('Erreur lors de l’initialisation de la base de données:', error);
+    }
+};
+
+initializeDatabase();
+
+
+    
+//A model can be synchronized with the database by calling model.sync(options), 
+//an asynchronous function (that returns a Promise). 
+    await sequelize.sync({ force:true });//This creates the table, dropping it first if it already existed
     console.log('******Toutes les tables sont crées******');
     //on ajoute nos fausses données
 
@@ -78,10 +104,12 @@ try {
         })
 
     console.log('données CONTACT ok')
+
     await Groupe.create({ fonction: 'Administrateur', AuthorisationId: 1 })
     await Groupe.create({ fonction: 'Modérateur', AuthorisationId: 2 })
     await Groupe.create({ fonction: 'Utilisateur', AuthorisationId: 3 })
     console.log('données GROUPE ok')
+    
     await User.create({ lastname: 'ladmin', firstname: 'John', password: 'password111', email: 'admin@example.com', GroupeId: 1 })
     await User.create({ lastname: 'lemodo', firstname: 'John', password: 'password222', email: 'mode@example.com', GroupeId: 2 })
     await User.create({ lastname: 'lutil', firstname: 'John', password: 'password333', email: 'util@example.com', GroupeId: 3 })
@@ -257,6 +285,7 @@ try {
     )
 
     console.log("données TIER ok");
+
     await Campaign.create({
         name: "Solde d'été",
         description: "Promotion pour les produit d'été",
@@ -296,6 +325,7 @@ try {
         message: 'Venez découvrir notre super crm ',
     })
     console.log("données CAMPAIGN ok")
+
     await Exchange.create({ UserId: 1, ContactId: 1, content: 'envoyer un devis' })
     await Exchange.create({ UserId: 2, ContactId: 2, content: 'rapeller plus tard.' })
     await Exchange.create({ UserId: 3, ContactId: 3, content: 'ne plus déranger.' })
@@ -303,6 +333,7 @@ try {
     await Exchange.create({ UserId: 7, ContactId: 5, content: "invitation a un rdv en attente d'une réponse" })
     await Exchange.create({ UserId: 7, ContactId: 5, content: 'retour a la case départ' })
     console.log("données EXCHANGE ok");
+
     await Bind.create({ TierId: 1, ContactId: 1 })
     await Bind.create({ TierId: 2, ContactId: 2 })
     await Bind.create({ TierId: 3, ContactId: 3 })
@@ -317,6 +348,7 @@ try {
     await Bind.create({ TierId: 7, ContactId: 8 })
     await Bind.create({ TierId: 8, ContactId: 5 })
     console.log("********données BIND ok**********");
+
     await TierHasCampaign.create({ TierId: 1, CampaignId:1 })
     await TierHasCampaign.create({ TierId: 2, CampaignId:2 })
     await TierHasCampaign.create({ TierId: 3, CampaignId:3 })
@@ -329,6 +361,7 @@ try {
     await TierHasCampaign.create({ TierId: 2, CampaignId:6 })
     await TierHasCampaign.create({ TierId: 1, CampaignId:6 })
     console.log("********affectation TIER/campaign ok**********");
+    
     await UserHasCampaign.create({ UserId: 1, CampaignId:1 })
     await UserHasCampaign.create({ UserId: 2, CampaignId:2 })
     await UserHasCampaign.create({ UserId: 3, CampaignId:3 })

@@ -1,12 +1,13 @@
-import sequelize from "../db/dbConnection.js";
-import { DataTypes, Model, Validator } from "sequelize";
+import sequelize from "../config/sequelize.js";
+import { DataTypes, Model, Validator } from "sequelize";//Import the built-in data types
 import Groupe from "./groupe.js";
 import bcrypt from 'bcrypt';
 
 class User extends Model {}
 
+//Model.init de Sequelize
 User.init({
-
+// Model attributes are defined here
   lastname: {
     type: DataTypes.STRING(40),
     allowNull: false,
@@ -47,8 +48,9 @@ User.init({
   },
 
 }, {
-  sequelize,
-  modelName: 'User',
+  // Other model options go here
+  sequelize,// We need to pass the connection instance
+  modelName: 'User',// We need to choose the model name
   tableName: 'user'
 });
 
