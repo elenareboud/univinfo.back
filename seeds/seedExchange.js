@@ -1,4 +1,4 @@
-import Exchange from "../models/authorisation.js";
+import Exchange from "../models/exchange.js";
 
 const seedExchange = async () => {
   try {

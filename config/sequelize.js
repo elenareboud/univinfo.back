@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { Sequelize } from "sequelize";
 //créer et configurer une instance de .sequelize
 //const sequelize = new Sequelize('database', 'username', 'password', {....
@@ -14,8 +16,8 @@ const sequelize = new Sequelize(
         //logging: false,
         define: {
             underscored: true,
-        }
     }
+    
 );
 
 export default sequelize;

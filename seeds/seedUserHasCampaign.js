@@ -1,4 +1,4 @@
-import UserHasCampaign from "../models/authorisation.js";
+import UserHasCampaign from "../models/userhascampaign.js";
 
 const seedUserHasCampaign = async () => {
   try {

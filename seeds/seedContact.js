@@ -2,13 +2,13 @@ import Contact from "../models/contact.js";
 
 const seedContact = async () => {
         await Contact.create(
-      {
+    {
         title: 'M.',
         firstname: 'Jean-Philippe',
         lastname: 'Promms',
         work_phone: '0123456789',
         cellphone: '9876543210',
-        email: 'john.doe@example.com',
+        email: 'jphilippe@example.com',
         networks: 'linkedin.com/johndoe',
         poste_fonction: 'Manager',
         address: '123 Main St, City',
