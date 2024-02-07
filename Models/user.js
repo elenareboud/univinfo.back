@@ -1,5 +1,5 @@
 import sequelize from "../config/sequelize.js";
-import { DataTypes, Model, Validator } from "sequelize";//Import the built-in data types
+import { DataTypes, Model} from "sequelize";//Import the built-in data types
 import Groupe from "./groupe.js";
 import bcrypt from 'bcrypt';
 
@@ -29,21 +29,15 @@ User.init({
   password: {
     type: DataTypes.STRING(255),
     allowNull: false,
-    unique: true,
-    set(value) {
-      const hash = bcrypt.hashSync(value, 10); // hash du password 10fois
-      this.setDataValue('password', hash);
-    }
   },
   email: {
     type: DataTypes.STRING(255),
     allowNull: false,
     unique: true,
     validate: {
-      notEmpty: {
-        msg: 'L\'email ne peut être vide.'
+      isEmail: {
+        msg: `L'adresse mail doit être valide.`
       },
-      isEmail: true
     }
   },
 
@@ -54,10 +48,20 @@ User.init({
   tableName: 'user'
 });
 
-//definition d'une fonction de comparaison intégré au model
-User.prototype.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
+//Cette fonction de hook beforeSave s'exécute automatiquement avant que l'instance de User soit 
+//sauvegardée, assurant ainsi que le mot de passe est toujours haché.
+User.beforeSave(async (user, options) => {
+  if (user.changed('password')) {
+    const hash = await bcrypt.hash(user.password, 10); 
+    user.password = hash;
+  }
+});
+//une méthode au prototype de User pour comparer un mot de passe en clair a
+//avec le mot de passe haché stocké en utilisant bcrypt grâce à la fonction bcript.compare
+User.prototype.comparePassword = async function(candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
 };
+
 
 //déclaration des relations
 Groupe.hasMany(User);

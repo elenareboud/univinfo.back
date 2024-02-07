@@ -1,5 +1,5 @@
 import sequelize from "../config/sequelize.js";
-import { DataTypes, Model, Validator } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import User from "./user.js";
 
 class Tier extends Model {}
@@ -87,7 +87,8 @@ Tier.init({
   modelName: 'Tier',
   tableName: 'tier'
 });
-
+//des relations entre User et Tier, où 
+// User peut avoir plusieurs Tier et un Tier appartient à un User
 User.hasMany(Tier);
 Tier.belongsTo(User);
 

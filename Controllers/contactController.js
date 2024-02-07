@@ -40,7 +40,7 @@ const contactController = {
     try {
       const contactId = req.params.id;
       const contact = await Contact.findOne({
-        where: { id: contactId },
+        where: { id: contactId },//Operateur Sequelize
         include: [
           { model: Exchange },
           { model: Bind, include: { model: Tier } } // Inclure les données de la table Bind

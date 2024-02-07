@@ -3,26 +3,26 @@ import User from "../models/user.js";
 import Groupe from "../models/groupe.js";
 import Authorisation from "../models/authorisation.js";
 
+
+const SECRET_KEY = process.env.JWT_SECRET_KEY || "votre_clé_secrète"; // variable d'environnement pour la clé secrète
+
 const authController = {
     login: async function (req, res) {
         try {
-            // Recherchez l'email de l'utilisateur dans la base de données 
+            const { email, password } = req.body;
+
             const user = await User.findOne({
-                where: { email: req.body.email.toLowerCase() },
-                include: [
-                    {
-                        model: Groupe,
-                        include: {
-                            model: Authorisation
-                        }
-                    }
-                ]
+                where: { email: email.toLowerCase() },
             });
 
+            if (!user) {
+                return res.status(404).json({ message: "Utilisateur non trouvé." });
+            }
 
-            if (user && user.comparePassword(req.body.password)) {
-                // Authentification réussie
-                // Si l'authentification réussit, créez un token JWT
+            const isPasswordValid = await user.comparePassword(password);
+
+            if (isPasswordValid) {
+                // Les informations de l'utilisateur sont correctes, génére un token JWT
                 const token = jwt.sign({
                     id: user.id,
                     firstname: user.firstname,
@@ -31,25 +31,22 @@ const authController = {
                     edit: user.Groupe.Authorisation.edit,
                     make: user.Groupe.Authorisation.make,
                     suppress: user.Groupe.Authorisation.suppress
-                }, "votre_clé_secrète", {
-                    expiresIn: "1h",
+                },  SECRET_KEY,{
+                    expiresIn: "1h",// Définir une durée de validité appropriée pour le token
                 });
-                // Réponder avec le token pour qu'il puisse être utilisé côté clien
-                res.status(200).json({
+                
+                return res.status(200).json({
                     message: "Authentification réussie",
                     token: token,
                 });
-            } else {// Si l'utilisateur n'existe pas OU le mot de passe n'est pas identique
-                return res.status(401).json({
-                    message: "Authentification échouée",
-                    error: "Authentification échouée"
-                });
+            } else {
+                // Le mot de passe est incorrect
+                return res.status(401).json({ message: "Mot de passe incorrect." });
             }
-
         } catch (error) {
             console.error(error);
-            res.status(500).json({
-                message: "Une erreur est survenue lors de l'authentification",
+            return res.status(500).json({
+                message: "Erreur lors de l'authentification",
                 error: error.message,
             });
         }

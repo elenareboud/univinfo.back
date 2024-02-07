@@ -5,7 +5,7 @@ import TierHasCampaign from '../models/tierhascampaign.js';
 import User from '../models/user.js';
 import Tier from '../models/tier.js';
 
-const campaignControler = {
+const campaignController = {
 
   all: async function (req, res) {
     try {
@@ -24,7 +24,7 @@ const campaignControler = {
         where: { name: { [Op.iLike]: name + "%" } },//ilike permet d'etre insensible aux majuscules
       });
 
-      if (campaign) {
+      if (campaign.length > 0) {
         res.json(campaign);
       } else {
         res.status(404).json({ message: "aucun résultat" });
@@ -96,10 +96,10 @@ const campaignControler = {
         campaign: existingCampaign,
       })
     }
-    catch {
+    catch (error){
       console.error(error);
       res.status(500).json({
-        message: "Une est survenue lors de la mise à jour de la campagne",
+        message: "Une erreur est survenue lors de la mise à jour de la campagne",
         error: error.message,
       });
     }
@@ -161,4 +161,4 @@ addTier: async function (req, res) {
 }
 };
 
-export default campaignControler;
+export default campaignController;

@@ -6,8 +6,6 @@ import Campaign from "../models/campaign.js";
 import TierHasCampaign from "../models/tierhascampaign.js";
 
 
-
-
 const tierController = {
 
   all: async function (req, res) {
@@ -44,8 +42,12 @@ const tierController = {
       const tiers = await Tier.findOne({
         where: { id: tierId },
         include: [
-          { model: TierHasCampaign, include: { model: Campaign } },
-          { model: Bind, include: { model: Contact } } // Inclure les données de la table Bind
+          { model: TierHasCampaign, 
+            include: { model: Campaign } 
+          },
+          { model: Bind, 
+            include: { model: Contact } 
+          } // Inclure les données de la table Bind
         ],
       });
       if (tiers) {
@@ -159,10 +161,6 @@ const tierController = {
       message: "La relation a été créée."
     })
   }
-
-
- 
-
     } catch (error) {
       console.error(error);
       res.status(500).json({

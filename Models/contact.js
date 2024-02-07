@@ -1,5 +1,5 @@
 import sequelize from "../config/sequelize.js";
-import { DataTypes, Model, Validator } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 
 class Contact extends Model {}
 
@@ -10,12 +10,7 @@ Contact.init({
   },
   firstname: {
     type: DataTypes.STRING(40),
-    allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: 'Le prénom ne peut pas être vide.'
-      }
-    }
+    allowNull: true,
   },
   lastname: {
     type: DataTypes.STRING(40),
