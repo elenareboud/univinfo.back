@@ -14,6 +14,10 @@ server.use(express.json());
 server.use(cors());
 server.use(router);
 
+server.get('/', (req, res) => {
+  res.json('Hello, Heroku !')
+})
+
 server.listen(port, () => {
   console.log(`Listening on http://localhost:${port}/`);
 });

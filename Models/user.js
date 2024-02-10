@@ -50,7 +50,7 @@ User.init({
 
 //Cette fonction de hook beforeSave s'exécute automatiquement avant que l'instance de User soit 
 //sauvegardée, assurant ainsi que le mot de passe est toujours haché.
-User.beforeSave(async (user, options) => {
+User.beforeSave(async (user) => {
   if (user.changed('password')) {
     const hash = await bcrypt.hash(user.password, 10); 
     user.password = hash;
