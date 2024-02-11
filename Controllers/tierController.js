@@ -10,8 +10,8 @@ const tierController = {
 
   all: async function (req, res) {
     try {
-      const tiers = await Tier.findAll();
-      res.send(tiers);
+      const tier = await Tier.findAll();
+      res.send(tier);
     }
     catch (error) {
       console.error(error);
@@ -21,12 +21,12 @@ const tierController = {
   findByName: async function (req, res) {
     try {
       const name = req.params.name;
-      const tiers = await Tier.findAll({
+      const tier = await Tier.findAll({
         where: { social_reason: { [Op.iLike]: name + "%" } },//ilike permet d'etre insensible aux majuscules
       });
 
-      if (tiers) {
-        res.json(tiers);
+      if (tier) {
+        res.json(tier);
       } else {
         res.status(404).json({ message: "Aucun résultat" });
       }
@@ -39,7 +39,7 @@ const tierController = {
   details: async function (req, res) {
     try {
       const tierId = req.params.id;
-      const tiers = await Tier.findOne({
+      const tier = await Tier.findOne({
         where: { id: tierId },
         include: [
           { model: TierHasCampaign, 
@@ -50,8 +50,8 @@ const tierController = {
           } // Inclure les données de la table Bind
         ],
       });
-      if (tiers) {
-        res.json(tiers);
+      if (tier) {
+        res.json(tier);
       } else {
         res.status(404).json({ message: "Aucun résultat" });
       }

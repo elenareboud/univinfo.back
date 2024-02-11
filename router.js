@@ -30,8 +30,8 @@ router.patch('/api/campaign/update/:campaignid', campaignController.updateCampai
 router.delete('/api/campaign/delete/:campaignid', campaignController.deleteCampaign);
 router.post('/api/tierhascampaign', campaignController.addTier);
 
-router.get('/api/tiers', tierController.all);
-router.get('/api/tiers/:name', tierController.findByName);
+router.get('/api/tier', tierController.all);
+router.get('/api/tier/:name', tierController.findByName);
 router.get('/api/tier/details/:id', tierController.details);
 router.post('/api/tier/create', tierController.addTier);
 router.patch('/api/tier/update/:tierid', tierController.updateTier);

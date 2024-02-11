@@ -4,9 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "back": "NODE_ENV=production node univinfo.back/server.js", 
-    "initdb": "node univinfo.back/initializeDatabase", 
-    "dev": "NODE_ENV=development nodemon server.js"
+    "back": "cross-env NODE_ENV=production node univinfo.back/server.js",
+    "initdb": "node univinfo.back/initializeDatabase",
+    "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "node": "20.x"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^3.0.3"
   }
 }
