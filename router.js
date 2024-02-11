@@ -1,5 +1,5 @@
 import express from "express";
-import authController from '../univinfo.back/controllers/authController.js';
+import authController from './controllers/authController.js';
 import tierController from './controllers/tierController.js';
 import userController from './controllers/userController.js';
 import contactController from './controllers/contactController.js';
