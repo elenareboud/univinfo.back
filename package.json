@@ -11,7 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": { 
+    "cross-env": "^7.0.3",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -26,7 +27,6 @@
     "node": "20.x"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "nodemon": "^3.0.3"
   }
 }
