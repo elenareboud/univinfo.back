@@ -1,8 +1,5 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
-import Groupe from "../models/groupe.js";
-import Authorisation from "../models/authorisation.js";
-
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY || "votre_clé_secrète"; // variable d'environnement pour la clé secrète
 

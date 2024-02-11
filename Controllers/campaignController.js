@@ -145,7 +145,7 @@ addTier: async function (req, res) {
           message: "La relation existe déjà."
         })
     } else {
-      const createTier = await TierHasCampaign.create(newTier);
+      await TierHasCampaign.create(newTier);
       res.status(202).json({
         message: "La relation a été créée."
       })
