@@ -1,6 +1,6 @@
-import Authorisation from '../models/authorisation.js';
-import Groupe from '../models/groupe.js';
-import User from '../models/user.js';
+import Authorisation from '../Models/authorisation.js';
+import Groupe from '../Models/groupe.js';
+import User from '../Models/user.js';
 
 const userController = {
 

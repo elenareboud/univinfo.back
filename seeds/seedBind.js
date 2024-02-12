@@ -1,4 +1,4 @@
-import Bind from "../models/bind.js";
+import Bind from "../Models/bind.js";
 
 const seedBind = async () => {
   try {

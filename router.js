@@ -1,12 +1,11 @@
 import express from "express";
-import authController from './controllers/authController.js';
-import tierController from './controllers/tierController.js';
-import userController from './controllers/userController.js';
-import contactController from './controllers/contactController.js';
-import exchangeController from './controllers/exchangeController.js';
-import campaignController from './controllers/campaignController.js';
-import groupController from "./controllers/groupController.js";
-
+import tierController from './Controllers/tierController.js';
+import userController from './Controllers/userController.js';
+import contactController from './Controllers/contactController.js';
+import exchangeController from './Controllers/exchangeController.js';
+import campaignController from './Controllers/campaignController.js';
+import groupController from "./Controllers/groupController.js";
+import authController from './Controllers/authController.js';
 
 const router = express.Router();
 

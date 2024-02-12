@@ -1,4 +1,4 @@
-import Exchange from "../models/exchange.js";
+import Exchange from "../Models/exchange.js";
 
 const seedExchange = async () => {
   try {

@@ -1,9 +1,9 @@
-import Contact from "../models/contact.js";
-import Bind from "../models/bind.js";
-import Tier from "../models/tier.js";
+import Contact from "../Models/contact.js";
+import Bind from "../Models/bind.js";
+import Tier from "../Models/tier.js";
 import { Op } from "sequelize";
-import Campaign from "../models/campaign.js";
-import TierHasCampaign from "../models/tierhascampaign.js";
+import Campaign from "../Models/campaign.js";
+import TierHasCampaign from "../Models/tierhascampaign.js";
 
 
 const tierController = {

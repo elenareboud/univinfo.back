@@ -1,4 +1,4 @@
-import Authorisation from "../models/authorisation.js";
+import Authorisation from "../Models/authorisation.js";
 
 const seedAuthorisation = async () => {
   try {

@@ -1,4 +1,4 @@
-import Contact from "../models/contact.js";
+import Contact from "../Models/contact.js";
 
 const seedContact = async () => {
         await Contact.create(

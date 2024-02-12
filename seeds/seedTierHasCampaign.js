@@ -1,4 +1,4 @@
-import TierHasCampaign from "../models/tierhascampaign.js";
+import TierHasCampaign from "../Models/tierhascampaign.js";
 
 const seedTierHasCampaign = async () => {
   try {

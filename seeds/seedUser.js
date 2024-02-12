@@ -1,4 +1,4 @@
-import User from "../models/user.js";
+import User from "../Models/user.js";
 
 //on pousse le nouvel utilisateur dans notr bdd grâce à la méthode
 //create

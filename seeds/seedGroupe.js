@@ -1,4 +1,4 @@
-import Groupe from "../models/groupe.js";
+import Groupe from "../Models/groupe.js";
 
 const seedGroupe = async () => {
     await Groupe.create({

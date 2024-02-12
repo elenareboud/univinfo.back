@@ -1,4 +1,4 @@
-import Campaign from "../models/campaign.js";
+import Campaign from "../Models/campaign.js";
 
 const seedCampaign = async () => {
   try {

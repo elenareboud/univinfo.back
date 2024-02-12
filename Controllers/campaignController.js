@@ -1,9 +1,9 @@
-import Campaign from '../models/campaign.js';
+import Campaign from '../Models/campaign.js';
 import { Op } from 'sequelize';
-import UserHasCampaign from '../models/userhascampaign.js';
-import TierHasCampaign from '../models/tierhascampaign.js';
-import User from '../models/user.js';
-import Tier from '../models/tier.js';
+import UserHasCampaign from '../Models/userhascampaign.js';
+import TierHasCampaign from '../Models/tierhascampaign.js';
+import User from '../Models/user.js';
+import Tier from '../Models/tier.js';
 
 const campaignController = {
 

@@ -1,4 +1,4 @@
-import Tier from "../models/tier.js";
+import Tier from "../Models/tier.js";
 
 const seedTier = async () => {
   try {
