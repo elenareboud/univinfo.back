@@ -4,8 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "back": "cross-env NODE_ENV=production node univinfo.back/server.js",
-    "initdb": "node univinfo.back/initializeDatabase",
+    "back": "cross-env NODE_ENV=production node ./server.js",
+    "initdb": "node ./initializeDatabase",
     "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
   "keywords": [],
