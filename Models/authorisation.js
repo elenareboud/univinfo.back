@@ -1,5 +1,5 @@
 import sequelize from "../config/sequelize.js";
-import { DataTypes, Model, Validator } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 
 class Authorisation extends Model {}
 

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
-const SECRET_KEY = process.env.JWT_SECRET_KEY || "votre_clé_secrète"; // variable d'environnement pour la clé secrète
+const SECRET_KEY = process.env.JWT_SECRET_KEY; // variable d'environnement pour la clé secrète
 
 const authController = {
     login: async function (req, res) {
