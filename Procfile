@@ -1,2 +1,2 @@
 
-web: npm run back
+web: node server.js
