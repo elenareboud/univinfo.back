@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "back": "cross-env NODE_ENV=production node ./server.js",
+    "back": "node ./server.js",
     "initdb": "node ./initializeDatabase",
     "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
